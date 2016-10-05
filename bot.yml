@@ -1,5 +1,5 @@
-name: stanley
-description: A simple node.js starter bot for Beep Boop
+name: ti3bot
+description: A bot for custodial TI3 work.
 avatar: resources/avatar.png
 #background: resources/background.png
 #config:
