@@ -2,6 +2,9 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
+var races_original = ['a','b','c']
+var races = races_original
+
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -30,6 +33,10 @@ if (token) {
 
 controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
+})
+
+controller.hears(['list'], ['direct_mention','direct_message'], function (bot, message) {
+  bot.reply(message, "Here are the currently available races:\n" + races)
 })
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
