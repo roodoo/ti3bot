@@ -2,7 +2,26 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
-var races_original = ['a','b','c']
+var races_original = [
+	"The Barony of Letnev",
+	"The Clan of Saar",
+	"The Emirates of Hacan",
+	"The Federation of Sol",
+	"The Mentak Coalition",
+	"The Naalu Collective",
+	"The Nekro Virus",
+	"The Sardakk N’orr",
+	"The Universities of Jol-Nar",
+	"The Winnu",
+	"The Xxcha Kingdom",
+	"The Yssaril Tribes",
+	"The Brotherhood of Yin",
+	"The Embers of Muaat",
+	"The Ghosts of Creuss",
+	"The L1z1x Mindnet",
+	"The Arborec"
+  ]
+
 var races = races_original
 
 var controller = Botkit.slackbot({
