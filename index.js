@@ -36,7 +36,11 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 controller.hears(['list'], ['direct_mention','direct_message'], function (bot, message) {
-  bot.reply(message, "Here are the currently available races:\n" + races)
+  var reply = "Here are the currently available races:\n"
+  races.forEach(function(item) { 
+    reply += "* " + item + "\n"
+  })
+  bot.reply(message, reply)
 })
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
