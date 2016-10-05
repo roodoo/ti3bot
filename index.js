@@ -21,8 +21,10 @@ var races_original = [
 	"The L1z1x Mindnet",
 	"The Arborec"
   ]
-
 var races = races_original
+var currently_choosing
+var current_choices = []
+var number_of_choices = 3
 
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
@@ -57,9 +59,16 @@ controller.on('bot_channel_join', function (bot, message) {
 controller.hears(['list'], ['direct_mention','direct_message'], function (bot, message) {
   var reply = "Here are the currently available races:\n"
   races.forEach(function(item) { 
-    reply += "* " + item + "\n"
+    reply += "* " + item + "\n";
   })
-  bot.reply(message, reply)
+  bot.reply(message, reply);
+})
+
+controller.hears(['do'], ['direct_mention'], function (bot, message) {
+  const { user, channel, text } = message;
+  const userData = text.match(/<@([A-Z0–9]{9})>/); // parse the text for user's 9 character id
+  var reply = "I heard " + userData;
+  bot.reply(message, reply);
 })
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
