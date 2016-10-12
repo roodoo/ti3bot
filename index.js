@@ -72,6 +72,8 @@ controller.hears(['dig'], ['direct_mention'], function (bot, message) {
   reply += "So that's the text '" + message.text + "'.";
   userData = message.text.match(/<@([A-Z0-9]{9})>/);
   reply += "And the userdata is " + userData + ".";
+	userName, userId = userData.split(",");
+	reply += "\nThat's userName = " + userName + " and userId = " + userId + ".";
   reply += "message user was " + message.user + ".";
   bot.reply(message, reply);
 })
@@ -82,7 +84,7 @@ controller.hears(['add'], ['direct_mention'], function (bot, message) {
   if (userData) {
 		if (!players[userData]) {
 			players[userData] = null;
-			reply += "\nAdded @<" + userData + ">.";
+			reply += "\nAdded " + userData + ">.";
 		} else {
 			reply += "@<" + userData + "> is already playing.";
 		}
