@@ -76,8 +76,19 @@ controller.hears(['dig'], ['direct_mention'], function (bot, message) {
   bot.reply(message, reply);
 })
 
-controller.hears(['^add'], ['direct_mention'], function (bot, message) {
-  var reply = "I heard add at the beginning of the message."
+controller.hears(['add'], ['direct_mention'], function (bot, message) {
+  var reply = "I heard add. text was " + message.text + ".";
+  var userData = message.text.match(/<@([A-Z0-9]{9})>/);
+  if (userData) {
+		if (!players[userData]) {
+			players[userData] = null;
+			reply += "\nAdded @<" + userData + ">.";
+		} else {
+			reply += "@<" + userData + "> is already playing.";
+		}
+	} else {
+	  reply += "\nBut there was no one to add ???";
+	}
   bot.reply(message, reply);
 }
 
