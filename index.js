@@ -58,7 +58,7 @@ controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
-controller.hears(['list'], ['direct_mention','direct_message'], function (bot, message) {
+controller.hears(['list races'], ['direct_mention','direct_message'], function (bot, message) {
   var reply = "Here are the currently available races:\n"
   races.forEach(function(item) { 
     reply += "* " + item + "\n";
