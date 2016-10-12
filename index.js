@@ -90,7 +90,7 @@ controller.hears(['add'], ['direct_mention'], function (bot, message) {
 	  reply += "\nBut there was no one to add ???";
 	}
   bot.reply(message, reply);
-}
+})
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
   bot.reply(message, 'Hello.')
