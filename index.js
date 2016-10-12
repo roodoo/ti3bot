@@ -93,7 +93,10 @@ controller.hears(['add'], ['direct_mention'], function (bot, message) {
 })
 
 controller.hears(['list players'], ['direct_mention'], function (bot, message) {
-  var reply = "The players are: " + players + ".";
+	var reply = "The players are:\n";
+	for (var p in players) {
+	  reply += " - " + p + " playing " + players[p] + "."
+	}
 	bot.reply(message, reply);
 })
 
