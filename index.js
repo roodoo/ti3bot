@@ -94,8 +94,8 @@ controller.hears(['add'], ['direct_mention'], function (bot, message) {
 
 controller.hears(['list players'], ['direct_mention'], function (bot, message) {
   var reply = "The players are:\n"
-	players.forEach(function(k,v) {
-		reply += "- " + k + " playing " + v + ".";
+	players.forEach(function(key) {
+		reply += "- " + key + " playing " + players[key] + ".";
 	})
 	bot.reply(message, reply);
 })
