@@ -26,6 +26,8 @@ var currently_choosing
 var current_choices = []
 var number_of_choices = 3
 
+var players = {}
+
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -64,11 +66,7 @@ controller.hears(['list'], ['direct_mention','direct_message'], function (bot, m
   bot.reply(message, reply);
 })
 
-controller.hears(['done', 'do @(.*)'], ['direct_mention'], function (bot, message) {
-/*
-  const { user, channel, text } = message;
-  const userData = text.match(/<@([A-Z0–9]{9})>/); // parse the text for user's 9 character id
-*/
+controller.hears(['dig'], ['direct_mention'], function (bot, message) {
   var reply = "I heard " + message.match[0] + ".\n";
   reply += "Plus the 1 was " + message.match[1] + ".\n";
   reply += "So that's the text '" + message.text + "'.";
@@ -77,6 +75,11 @@ controller.hears(['done', 'do @(.*)'], ['direct_mention'], function (bot, messag
   reply += "message user was " + message.user + ".";
   bot.reply(message, reply);
 })
+
+controller.hears(['^add'], ['direct_mention'], function (bot, message) {
+  var reply = "I heard add at the beginning of the message."
+  bot.reply(message, reply);
+}
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
   bot.reply(message, 'Hello.')
