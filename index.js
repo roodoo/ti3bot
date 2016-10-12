@@ -64,12 +64,12 @@ controller.hears(['list'], ['direct_mention','direct_message'], function (bot, m
   bot.reply(message, reply);
 })
 
-controller.hears(['do'], ['direct_mention'], function (bot, message) {
+controller.hears(['do @(.*)'], ['direct_mention'], function (bot, message) {
 /*
   const { user, channel, text } = message;
   const userData = text.match(/<@([A-Z0–9]{9})>/); // parse the text for user's 9 character id
 */
-  var reply = "I heard '" + message + "'.";
+  var reply = "I heard to do '" + message.match[1] + "'.";
   bot.reply(message, reply);
 })
 
