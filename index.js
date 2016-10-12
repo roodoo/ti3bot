@@ -74,6 +74,7 @@ controller.hears(['done', 'do @(.*)'], ['direct_mention'], function (bot, messag
   reply += "So that's the text '" + message.text + "'.";
   userData = message.text.match(/<@([A-Z0-9]{9})>/);
   reply += "And the userdata is " + userData + ".";
+  reply += "message user was " + message.user + ".";
   bot.reply(message, reply);
 })
 
