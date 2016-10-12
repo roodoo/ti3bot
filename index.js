@@ -76,8 +76,8 @@ controller.hears(['dig'], ['direct_mention'], function (bot, message) {
 	/*userArr = userData.split(",");
 	userName = userArr[0]
 	userId = userArr[1]
-	*/
 	reply += "\nThat's userName = " + userName + " and userId = " + userId + ".";
+	*/
   reply += "message user was " + message.user + ".";
   bot.reply(message, reply);
 })
