@@ -72,6 +72,7 @@ controller.hears(['dig'], ['direct_mention'], function (bot, message) {
   reply += "So that's the text '" + message.text + "'.";
   userData = message.text.match(/<@([A-Z0-9]{9})>/);
   reply += "And the userdata is " + userData + ".";
+	reply += "type of userdata is " + typeof(userData) + ".";
 	userArr = userData.split(",");
 	userName = userArr[0]
 	userId = userArr[1]
